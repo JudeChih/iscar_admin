@@ -1,0 +1,10 @@
+stages:
+    - deploy
+deploy_alpha:
+    stage:
+        deploy
+    only:
+        - feature
+    script:
+        - sshpass -p "$ADMINPASS" rsync -avzh * admin@13.115.96.40:/var/www/html/iscar_admin/
+        - sshpass -p "$ADMINPASS" ssh admin@13.115.96.40 'sudo chown -R apache.apache /var/www/html/iscar_admin;sudo chmod -R 755 /var/www/html/iscar_admin;sudo chmod -R 777 /var/www/html/iscar_admin/storage;'

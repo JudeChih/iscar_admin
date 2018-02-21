@@ -1,0 +1,1 @@
+$(function(){$(".btn_yes").on("click",function(){$(".prompt_body").fadeOut(400,function(){$(".prompt_body").remove()})})});
